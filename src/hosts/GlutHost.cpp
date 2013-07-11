@@ -314,6 +314,7 @@ void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
 	glutMotionFunc ( _onMouseDrag );
 	glutPassiveMotionFunc ( _onMouseMove );
 
+	glutSetCursor( GLUT_CURSOR_NONE ) ;
 	glutMultiButtonFunc ( _onMultiButton );
 	glutMultiMotionFunc ( _onMultiMotion );
 	
