@@ -214,7 +214,6 @@ static void _onPaint () {
 //----------------------------------------------------------------//
 static void _onReshape( int w, int h ) {
 
-	printf("_onReshape()\n");
 	if ( sExitFullscreen ) {
 	
 		w = sWinWidth;
