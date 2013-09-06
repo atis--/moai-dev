@@ -30,6 +30,8 @@ static void _cleanup () {
 struct AKUContext {
 	
 	//----------------------------------------------------------------//
+	AKU_DEFINE_FUNC_CONTEXT ( ShowCursor );
+	AKU_DEFINE_FUNC_CONTEXT ( HideCursor );
 	AKU_DEFINE_FUNC_CONTEXT ( EnterFullscreenMode );
 	AKU_DEFINE_FUNC_CONTEXT ( ErrorTraceback );
 	AKU_DEFINE_FUNC_CONTEXT ( ExitFullscreenMode );
@@ -48,6 +50,14 @@ static ContextMap*	gContextMap = 0;
 static AKUContextID	gContextIDCounter = 0;
 static AKUContextID	gContextID = 0;
 static AKUContext*	gContext = 0;
+
+//----------------------------------------------------------------//
+static void _ShowCursor () {}
+AKU_DEFINE_FUNC_ACCESSORS ( ShowCursor, _ShowCursor )
+
+//----------------------------------------------------------------//
+static void _HideCursor () {}
+AKU_DEFINE_FUNC_ACCESSORS ( HideCursor, _HideCursor )
 
 //----------------------------------------------------------------//
 static void _EnterFullscreenMode () {}

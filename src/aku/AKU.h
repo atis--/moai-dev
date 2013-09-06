@@ -38,12 +38,16 @@ enum {
 };
 
 // Callback management
+typedef void ( *AKUShowCursorFunc )				();
+typedef void ( *AKUHideCursorFunc )				();
 typedef void ( *AKUEnterFullscreenModeFunc )	();
 typedef void ( *AKUErrorTracebackFunc )         ( const char* message, struct lua_State* L, int level );
 typedef void ( *AKUExitFullscreenModeFunc )		();
 typedef void ( *AKUOpenWindowFunc )				( const char* title, int width, int height );
 typedef void ( *AKUSetSimStepFunc )				( double step );
 
+AKU_DECLARE_FUNC_ACCESSORS ( ShowCursor )
+AKU_DECLARE_FUNC_ACCESSORS ( HideCursor )
 AKU_DECLARE_FUNC_ACCESSORS ( EnterFullscreenMode )
 AKU_DECLARE_FUNC_ACCESSORS ( ErrorTraceback )
 AKU_DECLARE_FUNC_ACCESSORS ( ExitFullscreenMode )

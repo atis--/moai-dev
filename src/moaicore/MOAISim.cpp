@@ -99,6 +99,40 @@ int MOAISim::_exitFullscreenMode ( lua_State* L ) {
 }
 
 //----------------------------------------------------------------//
+/**	@name	showCursor
+	@text	Show system cursor.
+
+	@out	nil
+*/
+int MOAISim::_showCursor ( lua_State *L ) {
+
+	MOAILuaState state ( L );
+
+	AKUShowCursorFunc showCursor = AKUGetFunc_ShowCursor ();
+	if ( showCursor )
+		showCursor ();
+
+	return 0;
+}
+
+//----------------------------------------------------------------//
+/**	@name	hideCursor
+	@text	Hide system cursor.
+
+	@out	nil
+*/
+int MOAISim::_hideCursor ( lua_State* L ) {
+
+	MOAILuaState state ( L );
+
+	AKUHideCursorFunc hideCursor = AKUGetFunc_HideCursor ();
+	if ( hideCursor )
+		hideCursor ();
+
+	return 0;
+}
+
+//----------------------------------------------------------------//
 /**	@name forceGarbageCollection
 	@text	Runs the garbage collector repeatedly until no more MOAIObjects
 			can be collected.
@@ -772,6 +806,8 @@ void MOAISim::RegisterLuaClass ( MOAILuaState& state ) {
 	luaL_Reg regTable [] = {
 		{ "clearLoopFlags",				_clearLoopFlags },
 		{ "crash",						_crash },
+		{ "showCursor",					_showCursor },
+		{ "hideCursor",					_hideCursor },
 		{ "enterFullscreenMode",		_enterFullscreenMode },
 		{ "exitFullscreenMode",			_exitFullscreenMode },
 		{ "forceGarbageCollection",		_forceGarbageCollection },

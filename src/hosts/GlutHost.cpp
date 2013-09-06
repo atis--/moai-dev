@@ -284,6 +284,16 @@ void _AKUExitFullscreenModeFunc () {
 }
 
 //----------------------------------------------------------------//
+void _AKUShowCursor () {
+	glutSetCursor( GLUT_CURSOR_INHERIT ) ;
+}
+
+//----------------------------------------------------------------//
+void _AKUHideCursor () {
+	glutSetCursor( GLUT_CURSOR_NONE ) ;
+}
+
+//----------------------------------------------------------------//
 void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
 
 	
@@ -313,7 +323,6 @@ void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
 	glutMotionFunc ( _onMouseDrag );
 	glutPassiveMotionFunc ( _onMouseMove );
 
-	glutSetCursor( GLUT_CURSOR_NONE ) ;
 	glutMultiButtonFunc ( _onMultiButton );
 	glutMultiMotionFunc ( _onMultiMotion );
 	
@@ -461,6 +470,8 @@ void GlutRefreshContext () {
 	AKUSetInputDeviceButton			( GlutInputDeviceID::DEVICE, GlutInputDeviceSensorID::MOUSE_RIGHT,	"mouseRight" );
 	AKUSetInputDeviceTouch			( GlutInputDeviceID::DEVICE, GlutInputDeviceSensorID::TOUCH,		"touch");
 
+	AKUSetFunc_ShowCursor ( _AKUShowCursor );
+	AKUSetFunc_HideCursor ( _AKUHideCursor );
 	AKUSetFunc_EnterFullscreenMode ( _AKUEnterFullscreenModeFunc );
 	AKUSetFunc_ExitFullscreenMode ( _AKUExitFullscreenModeFunc );
 	AKUSetFunc_OpenWindow ( _AKUOpenWindowFunc );
