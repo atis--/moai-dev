@@ -222,7 +222,6 @@ static void _onReshape( int w, int h ) {
 		sExitFullscreen = false;
 	}
 
-	AKUSetScreenSize ( w, h );
 	AKUSetViewSize ( w, h );
 }
 
@@ -330,7 +329,6 @@ void _AKUOpenWindowFunc ( const char* title, int width, int height ) {
 	glutReshapeFunc ( _onReshape );
 	
 	AKUDetectGfxContext ();
-	AKUSetScreenSize ( width, height );
 
 #ifdef __APPLE__
 	GLint sync = 1;
@@ -456,6 +454,11 @@ void GlutRefreshContext () {
 	#ifdef GLUTHOST_USE_PARTICLE_PRESETS
 		ParticlePresets ();
 	#endif
+
+	// Set screen (desktop) resolution.
+	int screen_width = glutGet ( GLUT_SCREEN_WIDTH );
+	int screen_height = glutGet ( GLUT_SCREEN_HEIGHT );
+	AKUSetScreenSize ( screen_width, screen_height );
 
 	AKUSetInputConfigurationName ( "AKUGlut" );
 
