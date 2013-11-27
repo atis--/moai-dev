@@ -171,6 +171,7 @@ void MOAIFont::InitWithBMFont ( cc8* filename ) {
 			} while ( !endl );
 			
 			MOAITexture* texture = new MOAITexture ();
+			texture->SetFilter ( GL_NEAREST, GL_NEAREST );
 			glyphCache->SetTexture ( id, texture );
 			texture->Init ( texturename, MOAITexture::DEFAULT_TRANSFORM );
 		}
