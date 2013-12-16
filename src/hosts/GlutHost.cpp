@@ -372,6 +372,8 @@ static void _cleanup () {
 	}
 }
 
+#pragma comment( linker, "/subsystem:\"windows\" /entry:\"mainCRTStartup\"" )
+
 //----------------------------------------------------------------//
 int GlutHost ( int argc, char** argv ) {
 
@@ -380,12 +382,15 @@ int GlutHost ( int argc, char** argv ) {
 	atexit ( _cleanup );
 
 	glutInit ( &argc, argv );
-
+	
 	GlutRefreshContext ();
 
 	char* lastScript = NULL;
 
-	if ( argc < 2 ) {
+	AKURunScript ( "config.lua" );
+	AKURunScript ( "script/main.lua" );
+
+	/*if ( argc < 2 ) {
 		AKURunScript ( "main.lua" );
 	}
 	else {
@@ -406,7 +411,7 @@ int GlutHost ( int argc, char** argv ) {
 				lastScript = arg;
 			}
 		}
-	}
+	}*/
 	
 	//assuming that the last script is the entry point we watch for that directory and its subdirectories
 	if ( lastScript && sDynamicallyReevaluateLuaFiles ) {
