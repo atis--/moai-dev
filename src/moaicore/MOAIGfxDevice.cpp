@@ -784,6 +784,20 @@ void MOAIGfxDevice::ResetResources () {
 	}
 }
 
+static int my_rint(double a)
+{
+    const double two_to_52 = 4.5035996273704960e+15;
+    double fa = fabs(a);
+    double r = two_to_52 + fa;
+    if (fa >= two_to_52) {
+        r = a;
+    } else {
+        r = r - two_to_52;
+        r = _copysign(r, a);
+    }
+    return (int)r;
+}
+
 //----------------------------------------------------------------//
 void MOAIGfxDevice::ResetState () {
 
@@ -839,7 +853,8 @@ void MOAIGfxDevice::ResetState () {
 	
 	// reset the scissor rect
 	USRect scissorRect = this->mFrameBuffer->GetBufferRect ();
-	glScissor (( int )scissorRect.mXMin, ( int )scissorRect.mYMin, ( int )scissorRect.Width (), ( int )scissorRect.Height ());
+	glScissor ( my_rint ( scissorRect.mXMin ), my_rint (scissorRect.mYMin),
+		        my_rint ( scissorRect.Width () ), my_rint ( scissorRect.Height () ));
 	
 	this->mScissorRect = scissorRect;
 	
@@ -1128,11 +1143,11 @@ void MOAIGfxDevice::SetScissorRect ( USRect rect ) {
 
 		USRect deviceRect = this->mFrameBuffer->WndRectToDevice ( rect );
 
-		GLint x = ( GLint )deviceRect.mXMin;
-		GLint y = ( GLint )deviceRect.mYMin;
+		GLint x = my_rint( deviceRect.mXMin );
+		GLint y = my_rint( deviceRect.mYMin );
 		
-		GLsizei w = ( GLsizei )( deviceRect.Width () + 0.5f );
-		GLsizei h = ( GLsizei )( deviceRect.Height () + 0.5f );
+		GLsizei w = my_rint( deviceRect.Width () );
+		GLsizei h = my_rint( deviceRect.Height () );
 		
 		glScissor ( x, y, w, h );
 		this->mScissorRect = rect;
