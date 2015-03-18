@@ -157,7 +157,7 @@
       <ShowIncludes>false</ShowIncludes>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;glew32.lib;fmodex_vc.lib;advapi32.lib;comctl32.lib;oleaut32.lib;rpcrt4.lib;winmm.lib;wldap32.lib;ws2_32.lib;wsock32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;freeglut32.lib;glew32.lib;fmodex_vc.lib;advapi32.lib;comctl32.lib;oleaut32.lib;rpcrt4.lib;winmm.lib;wldap32.lib;ws2_32.lib;wsock32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <ShowProgress>NotSet</ShowProgress>
       <AdditionalLibraryDirectories>$(VCInstallDir)lib;$(VCInstallDir)PlatformSDK\lib;..\..\3rdparty\openGL\lib;..\..\3rdparty\FMOD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
@@ -196,7 +196,7 @@ xcopy /yr "$(OutDir)$(TargetName).pdb" "..\..\bin\$(Platform)\$(Configuration)\"
       <CallingConvention>Cdecl</CallingConvention>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>opengl32.lib;glu32.lib;glut32.lib;glew32.lib;fmodex_vc.lib;advapi32.lib;comctl32.lib;oleaut32.lib;rpcrt4.lib;winmm.lib;wldap32.lib;ws2_32.lib;wsock32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>opengl32.lib;glu32.lib;freeglut32.lib;glew32.lib;fmodex_vc.lib;advapi32.lib;comctl32.lib;oleaut32.lib;rpcrt4.lib;winmm.lib;wldap32.lib;ws2_32.lib;wsock32.lib;iphlpapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(VCInstallDir)lib;$(VCInstallDir)PlatformSDK\lib;..\..\3rdparty\openGL\lib;..\..\3rdparty\FMOD\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <ModuleDefinitionFile>$(ProjectDir)exports.def</ModuleDefinitionFile>
